@@ -1,21 +1,24 @@
+{% load static %}
 <html>
     <head>
-        <title>Django Girls blog</title>
+        <title>Toshich blog</title>
+        <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
     <body>
-        <div>
-            <h1><a href="/">Django Girls Blog</a></h1>
+        <div class="page-header">
+            <h1><a href="/">Toshich Blog</a></h1>
         </div>
-
-        <div>
+        <div class="content container">
             {% for post in posts %}
-                <div>
-                    <h4><a href="">{{ post.title }}</a></h4>
-                    <p>опубликовано: {{ post.published_date }}</p>
+                <div class="post">
+                    <h2><a href="">{{ post.title }}</a></h2>
+                    <div class="date">
+                        <p>опубликовано: {{ post.published_date }}</p>
+                    </div>
                     <p>автор: {{ post.author }}</p>
                     <p>{{ post.text|linebreaksbr }}</p>
                 </div>
             {% endfor %}
-
          </div>
     </body>
