@@ -1,0 +1,17 @@
+{% load static %}
+<html>
+    <head>
+        <title>Toshich blog</title>
+        <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    </head>
+    <body>
+        <div class="page-header">
+            <h1><a href="/">Toshich Blog</a></h1>
+        </div>
+        <div class="content container">
+            {% block content %}
+            {% endblock %}
+         </div>
+    </body>
+</html>

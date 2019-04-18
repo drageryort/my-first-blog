@@ -1,24 +1,14 @@
-{% load static %}
-<html>
-    <head>
-        <title>Toshich blog</title>
-        <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    </head>
-    <body>
-        <div class="page-header">
-            <h1><a href="/">Toshich Blog</a></h1>
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            <div class="date">
+                <p>опубликовано: {{ post.published_date }}</p>
+            </div>
+            <p>автор: {{ post.author }}</p>
+            <p>{{ post.text|linebreaksbr }}</p>
         </div>
-        <div class="content container">
-            {% for post in posts %}
-                <div class="post">
-                    <h2><a href="">{{ post.title }}</a></h2>
-                    <div class="date">
-                        <p>опубликовано: {{ post.published_date }}</p>
-                    </div>
-                    <p>автор: {{ post.author }}</p>
-                    <p>{{ post.text|linebreaksbr }}</p>
-                </div>
-            {% endfor %}
-         </div>
-    </body>
+    {% endfor %}
+{% endblock %}
